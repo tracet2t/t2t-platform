@@ -10,6 +10,7 @@ const section3 = hiddenSections[2]; // Access the third hidden section
 
 document.addEventListener("DOMContentLoaded", function () {
   var form = document.getElementById("uploadForm");
+  var submitButton = document.querySelector(".submit-button");
 
   //hide all the hidden sections when the user clicks on a form input field
   const inputFields = form.querySelectorAll("input, textareas"); // Get all input fields within the form
@@ -25,6 +26,8 @@ document.addEventListener("DOMContentLoaded", function () {
   form.addEventListener("submit", function (event) {
     event.preventDefault(); // Prevent the default form submission
 
+    // Disable the submit button to prevent multiple submissions
+    submitButton.disabled = true;
     uploadFile(); // Call the function to handle file upload and form submission
   });
 
@@ -57,6 +60,7 @@ document.addEventListener("DOMContentLoaded", function () {
             section2.style.display = "block";
             console.log("NIC Number already exists.");
             loadingMessage.style.display = "none";
+            submitButton.disabled = false;
           } else {
             console.log("Successfully Added");
             loadingMessage.style.display = "none";
@@ -66,6 +70,7 @@ document.addEventListener("DOMContentLoaded", function () {
         })
         .catch((error) => {
           console.error("Error:", error);
+          submitButton.disabled = false;
         });
 
       console.log("Form data sent to server");
