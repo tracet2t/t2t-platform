@@ -130,6 +130,7 @@ xhr.onreadystatechange = function () {
 
     // Move Chosen initialization inside the callback
     $(".chosen-select-student").chosen({
+      width: "80%",
       no_results_text: "Oops, nothing found!",
       allow_single_deselect: true,
       // max_selected_options: 4, // Set the maximum number of selections if needed
@@ -159,6 +160,7 @@ xhrMentor.onreadystatechange = function () {
     populateDropdown(mentorFullNames, "Select5");
 
     $(".chosen-select-mentor").chosen({
+      width: "80%",
       no_results_text: "Oops, nothing found!",
       allow_single_deselect: true,
     });
