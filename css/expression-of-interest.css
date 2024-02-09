@@ -115,13 +115,12 @@
   align-items: center;
   text-align: center;
 }
-/* Add custom styles for Chosen select elements */
+
 .chosen-container {
-  width: 100%; /* Set the width as needed */
+  width: 100%;
   margin-bottom: 10px;
 }
 
-/* Optional: Customize Chosen dropdown and search input */
 .chosen-drop {
   border: 1px solid #ccc;
 }
@@ -134,17 +133,14 @@
   border-radius: 4px;
 }
 
-/* Optional: Customize Chosen options */
 .chosen-results li {
   font-size: 14px;
 }
 
-/* Optional: Customize Chosen option hover effect */
 .chosen-results li.highlighted {
   background-color: #e0e0e0;
 }
 
-/* Optional: Customize Chosen selected option */
 .chosen-single {
   font-size: 16px;
   padding: 8px;
@@ -153,17 +149,39 @@
   border-radius: 4px;
 }
 
-/* Optional: Customize Chosen arrow icon */
 .chosen-single div b {
   border-color: #333 transparent transparent;
 }
 
-/* Optional: Customize Chosen search icon */
 .chosen-search b {
   border-color: #333 transparent transparent;
 }
 
-/* Add more custom styles as needed */
+.description-list {
+  list-style-type: none;
+  padding: 0;
+  margin-left: 100px;
+  margin-bottom: 40px;
+  align-items: start;
+  text-align: left !important;
+}
+
+.description-items {
+  margin-bottom: 10px;
+}
+
+.description-items::before {
+  content: "\2022"; /* Bullet point */
+  color: #000000; /* Change the color as needed */
+  display: inline-block;
+  width: 1em;
+  margin-left: -1em;
+}
+
+.form-font {
+  font-size: 17px;
+  font-weight: normal;
+}
 
 /* Responsive design */
 @media screen and (max-width: 1000px) {
@@ -202,6 +220,9 @@
 
   .add-student-form .submit-button {
     margin-top: 15px;
+  }
+  .description-list {
+    margin-left: 20px;
   }
 }
 

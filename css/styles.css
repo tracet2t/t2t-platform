@@ -115,9 +115,8 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 2rem auto;
+  margin: 2rem auto 0;
   max-width: 1200px;
-  padding: 20px;
 }
 
 .description-text-container {
@@ -224,21 +223,19 @@ body {
   height: 50px;
 }
 
-/* Projects section */
-.projects-section {
+.project-section {
   background-color: #f5f5f5;
   padding: 2rem;
   text-align: center;
 }
 
-.projects-section h1 {
+.project-section h1 {
   font-size: 3rem;
   color: #3a506b;
   margin-bottom: 1rem;
 }
 
-.projects-list {
-  /*ok - project-list*/
+.project-list {
   list-style: none;
   margin: 0;
   padding: 0;
@@ -247,49 +244,48 @@ body {
   justify-content: center;
 }
 
-.project {
-  /*ok - project-list-item*/
+.project-list-item {
   background-color: #ffffff;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
   border-radius: 5px;
   margin: 1rem;
-  padding: 1rem 0;
-  width: 250px;
-  height: 400px;
+  padding: 2rem 1rem;
+  width: 300px;
+  height: 430px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 }
 
 .project-title {
-  /*ok - project-title*/
   font-size: 1.5rem;
   color: #1c2541;
-  margin-bottom: 1rem;
+  margin-bottom: auto;
   text-align: center;
 }
 
-.company-name {
+.company {
   font-size: 1.2rem;
   color: #5bc0be;
-  margin-bottom: 1rem;
+  margin-bottom: auto;
 }
 
-.project-goal {
+.goal {
   font-size: 1.2rem;
   color: #3a506b;
-  margin-bottom: 1rem;
+  margin-bottom: auto;
 }
 
-.project-requirements,
-.project-deadline {
+.duration,
+.minimumteam {
   font-size: 1rem;
   color: #3a506b;
   margin-bottom: 0.5rem;
 }
 
-.project-requirements i,
-.project-deadline i {
+.duration i,
+.minimumteam i {
+  margin-top: auto;
   margin-right: 0.5rem;
   color: #5bc0be;
 }

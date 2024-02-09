@@ -105,85 +105,131 @@ document.addEventListener("DOMContentLoaded", function () {
     reader.readAsDataURL(file);
   }
 });
+//***************************************** */
+form.addEventListener("submit", (event) => {
+  event.preventDefault();
 
-// dropdown menu js
-var xhr = new XMLHttpRequest();
-xhr.onreadystatechange = function () {
-  if (xhr.readyState == 4 && xhr.status == 200) {
-    // var titles = JSON.parse(xhr.responseText).titles;
-    var studentData = JSON.parse(xhr.responseText);
-    var firstNames = studentData.firstNames;
-    var lastNames = studentData.lastNames;
-    var nicNumbers = studentData.nicNumbers;
+  // Disable submit button
+  submitButton.disabled = true;
+  loadingMessage.style.display = "block";
 
-    // Combine first and last names and convert to lowercase
-    var fullNames = firstNames.map(function (firstName, index) {
-      var fullName =
-        firstName + " " + lastNames[index] + " (" + nicNumbers[index] + ")";
-      return fullName.toLowerCase();
+  // Get form data
+  const formData = new FormData(form);
+
+  // Convert form data to JSON
+  const json = JSON.stringify(Object.fromEntries(formData.entries()));
+  console.log(json);
+
+  // Make HTTP POST request to save mentor details
+  fetch(API_URL + "?action=expression-of-interest", {
+    method: "POST",
+    headers: {
+      "Content-Type": "text/plain;charset=utf-8",
+    },
+    body: json,
+  })
+    .then((response) => response.json())
+    .then((data) => {
+      if (data.error) {
+        section2.style.display = "none";
+        console.log("Mentor Not saved:", data);
+        section1.style.display = "block";
+        submitButton.disabled = false;
+        loadingMessage.style.display = "none";
+      } else {
+        section1.style.display = "none";
+        console.log("Mentor saved:", data);
+        section2.style.display = "block";
+        submitButton.disabled = false;
+        loadingMessage.style.display = "none";
+        form.reset();
+      }
+    })
+    .catch((error) => {
+      console.error("Error saving mentor:", error);
+      // TODO: Handle error
     });
+});
+//***************************************** */
 
-    populateDropdown(fullNames, "Select1");
-    populateDropdown(fullNames, "Select2");
-    populateDropdown(fullNames, "Select3");
-    populateDropdown(fullNames, "Select4");
+// // dropdown menu js
+// var xhr = new XMLHttpRequest();
+// xhr.onreadystatechange = function () {
+//   if (xhr.readyState == 4 && xhr.status == 200) {
+//     // var titles = JSON.parse(xhr.responseText).titles;
+//     var studentData = JSON.parse(xhr.responseText);
+//     var firstNames = studentData.firstNames;
+//     var lastNames = studentData.lastNames;
+//     var nicNumbers = studentData.nicNumbers;
 
-    // Move Chosen initialization inside the callback
-    $(".chosen-select-student").chosen({
-      width: "80%",
-      no_results_text: "Oops, nothing found!",
-      allow_single_deselect: true,
-      // max_selected_options: 4, // Set the maximum number of selections if needed
-    });
-  }
-};
-xhr.open("GET", API_URL + "?action=students-names", true);
-xhr.send();
+//     // Combine first and last names and convert to lowercase
+//     var fullNames = firstNames.map(function (firstName, index) {
+//       var fullName =
+//         firstName + " " + lastNames[index] + " (" + nicNumbers[index] + ")";
+//       return fullName.toLowerCase();
+//     });
 
-// get mentor details
-// dropdown menu js for mentor
-var xhrMentor = new XMLHttpRequest();
-xhrMentor.onreadystatechange = function () {
-  if (xhrMentor.readyState == 4 && xhrMentor.status == 200) {
-    var mentorData = JSON.parse(xhrMentor.responseText);
-    var mentorFirstNames = mentorData.firstNames;
-    var mentorLastNames = mentorData.lastNames;
+//     populateDropdown(fullNames, "Select1");
+//     populateDropdown(fullNames, "Select2");
+//     populateDropdown(fullNames, "Select3");
+//     populateDropdown(fullNames, "Select4");
 
-    var mentorFullNames = mentorFirstNames.map(function (
-      mentorFirstName,
-      index
-    ) {
-      var mentorFullName = mentorFirstName + " " + mentorLastNames[index];
-      return mentorFullName.toLowerCase();
-    });
+//     // Move Chosen initialization inside the callback
+//     $(".chosen-select-student").chosen({
+//       width: "80%",
+//       no_results_text: "Oops, nothing found!",
+//       allow_single_deselect: true,
+//       // max_selected_options: 4, // Set the maximum number of selections if needed
+//     });
+//   }
+// };
+// xhr.open("GET", API_URL + "?action=students-names", true);
+// xhr.send();
 
-    populateDropdown(mentorFullNames, "Select5");
+// // get mentor details
+// // dropdown menu js for mentor
+// var xhrMentor = new XMLHttpRequest();
+// xhrMentor.onreadystatechange = function () {
+//   if (xhrMentor.readyState == 4 && xhrMentor.status == 200) {
+//     var mentorData = JSON.parse(xhrMentor.responseText);
+//     var mentorFirstNames = mentorData.firstNames;
+//     var mentorLastNames = mentorData.lastNames;
 
-    $(".chosen-select-mentor").chosen({
-      width: "80%",
-      no_results_text: "Oops, nothing found!",
-      allow_single_deselect: true,
-    });
-  }
-};
-xhrMentor.open("GET", API_URL + "?action=mentor-names", true); // Change the action parameter to differentiate between mentor and student
-xhrMentor.send();
+//     var mentorFullNames = mentorFirstNames.map(function (
+//       mentorFirstName,
+//       index
+//     ) {
+//       var mentorFullName = mentorFirstName + " " + mentorLastNames[index];
+//       return mentorFullName.toLowerCase();
+//     });
 
-// Function to populate dropdown with titles
-function populateDropdown(titles, targetDropdownId) {
-  var select = document.getElementById(targetDropdownId);
-  select.innerHTML = "";
+//     populateDropdown(mentorFullNames, "Select5");
 
-  // Add an empty default option
-  var defaultOption = document.createElement("option");
-  defaultOption.value = "";
-  defaultOption.text = "";
-  select.add(defaultOption);
+//     $(".chosen-select-mentor").chosen({
+//       width: "80%",
+//       no_results_text: "Oops, nothing found!",
+//       allow_single_deselect: true,
+//     });
+//   }
+// };
+// xhrMentor.open("GET", API_URL + "?action=mentor-names", true); // Change the action parameter to differentiate between mentor and student
+// xhrMentor.send();
 
-  titles.forEach(function (title) {
-    var option = document.createElement("option");
-    option.value = title; // Set the option value to the title
-    option.text = title;
-    select.add(option);
-  });
-}
+// // Function to populate dropdown with titles
+// function populateDropdown(titles, targetDropdownId) {
+//   var select = document.getElementById(targetDropdownId);
+//   select.innerHTML = "";
+
+//   // Add an empty default option
+//   var defaultOption = document.createElement("option");
+//   defaultOption.value = "";
+//   defaultOption.text = "";
+//   select.add(defaultOption);
+
+//   titles.forEach(function (title) {
+//     var option = document.createElement("option");
+//     option.value = title; // Set the option value to the title
+//     option.text = title;
+//     select.add(option);
+//   });
+// }
