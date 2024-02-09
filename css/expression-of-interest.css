@@ -74,6 +74,7 @@
   transition: background-color 0.2s ease-in-out;
   margin-top: 20px;
   margin-left: 0;
+  width: 100%;
 }
 
 .add-student-form .submit-button:hover {
