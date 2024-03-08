@@ -34,7 +34,7 @@ function renderProjects() {
 
     // Create project detail items
     const detailItems = [
-      { icon: "fas fa-building", label: "Company", value: project.Company },
+      { icon: "fas fa-building", label: "Organization", value: project.Company },
       {
         icon: "fas fa-bullseye",
         label: "Goal",
