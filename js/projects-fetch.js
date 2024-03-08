@@ -44,8 +44,8 @@ function renderProjects() {
       {
         icon: "fas fa-tasks",
         label: "Tasks",
-        value: createReadMoreSection(project.Tasks),
-        // value: project.Tasks,
+        //value: createReadMoreSection(project.Tasks),
+        value: project.Tasks,
       },
       { icon: "fas fa-code", label: "Technology", value: project.Technology },
       {
