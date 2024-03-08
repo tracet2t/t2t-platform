@@ -38,8 +38,8 @@ function renderProjects() {
       {
         icon: "fas fa-bullseye",
         label: "Goal",
-        value: createReadMoreSection(project.Goal),
-        // value: project.Goal,
+        //value: createReadMoreSection(project.Goal),
+        value: project.Goal,
       },
       {
         icon: "fas fa-tasks",
@@ -62,7 +62,8 @@ function renderProjects() {
       {
         icon: "fas fa-link",
         label: "Details Link",
-        value: `<a href="${project.Details_Link}">View</a>`,
+        //value: `<a href="${project.Details_Link}">View</a>`,
+        value: project.Details_Link,
       },
     ];
 
