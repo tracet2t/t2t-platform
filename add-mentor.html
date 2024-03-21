@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Project List</title>
+    <title>Add Menotor</title>
     <link rel="icon" type="image/x-icon" href="images/favicon.ico" />
 
     <meta charset="UTF-8" />
@@ -21,9 +21,11 @@
       crossorigin="anonymous"
     />
     <link rel="stylesheet" href="css/navbar.css" />
-    <link rel="stylesheet" href="css/view-projects.css" />
+    <link rel="stylesheet" href="css/styles.css" />
+    <link rel="stylesheet" href="css/add-mentor.css" />
     <script src="js/globals.js"></script>
   </head>
+
   <body>
     <header class="header">
       <nav class="navbar navbar-expand-lg navbar-light">
@@ -91,53 +93,96 @@
       </nav>
       <div class="header-image-container">
         <img
-          src="https://images.unsplash.com/photo-1571171637578-41bc2dd41cd2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80"
+          src="images/mentor-2.jpg"
           alt="Tech Projects"
           class="header-image"
         />
         <div class="header-text-container">
-          <h1 class="header-title">Explore Projects</h1>
+          <h1 class="header-title">Add Mentors</h1>
         </div>
       </div>
     </header>
-
     <section class="description">
       <div class="description-container">
         <div class="description-text-container">
           <p class="description-text">
-            <span class="italic-text">
-              "The only way to do great work is to love what you do."
-            </span>
-            - Steve Jobs -
-          </p>
-          <p class="description-text">
-            Welcome to our pool of projects! Explore a diverse range of
-            opportunities spanning web development, data analysis, and more.
-            Submit your expression of interest (EOI) to embark on an enriching
-            journey of learning and discovery. Join us in solving problems!
+            By joining our mentorship program, you can make a lasting impact on
+            the next generation of talent. Share your expertise and guide
+            students in their journey to success. Don't miss the opportunity to
+            shape future professionals and give back to your industry. Become a
+            mentor today and help students learn, grow, and thrive, all while
+            enriching your own professional journey.
           </p>
         </div>
       </div>
     </section>
-    <!-- <div class="header-buttons-container">
-      <a href="#">
-        <button class="header-button">Add New Project</button>
-      </a>
-    </div> -->
-    <section class="search-bar">
-      <!-- Search bar -->
-      <input type="text" id="search-bar" placeholder="Search projects..." />
+    <section class="add-mentor-container">
+      <form class="add-mentor-form">
+        <div class="form-group full-width">
+          <label for="nic">NIC Number:</label>
+          <input type="text" id="nic " name="NIC" required />
+          <section class="hidden-section">
+            <p>
+              Error: The NIC number you entered already exists. Please use a
+              different NIC number.
+            </p>
+          </section>
+        </div>
+        <div class="form-group">
+          <label for="first-name">First Name:</label>
+          <input type="text" id="first-name" name="FName" required />
+        </div>
+        <div class="form-group">
+          <label for="last-name">Last Name:</label>
+          <input type="text" id="last-name" name="Lname" required />
+        </div>
+        <div class="form-group">
+          <label for="mentor-mobile1">Mobile No 1:</label>
+          <input type="number" id="mentor-mobile1" name="Mobile1" required />
+        </div>
+        <div class="form-group">
+          <label for="mentor-mobile2">Mobile No 2:</label>
+          <input type="number" id="mentor-mobile2" name="Mobile2" />
+        </div>
+        <div class="form-group">
+          <label for="contact-email">Contact Email:</label>
+          <input type="email" id="contact-email" name="Email" required />
+        </div>
+        <div class="form-group">
+          <label for="linkedin">Mentor's LinkedIn Profile:</label>
+          <input type="url" id="linkedin" name="LinkedIn" />
+        </div>
+        <div class="form-group full-width">
+          <label for="company">Company/Organization:</label>
+          <input type="text" id="company" name="Company" required />
+        </div>
+        <div class="form-group full-width">
+          <label for="industry">Mentor's Expertise/Industry:</label>
+          <textarea id="industry" name="Industry" required></textarea>
+        </div>
+        <div class="form-group full-width">
+          <label for="interest-area">Areas of Mentorship Interest:</label>
+          <textarea id="interest-area" name="Interest_Area" required></textarea>
+        </div>
+        <div class="form-group full-width">
+          <button type="submit" class="submit-button header-button">
+            Submit
+          </button>
+          <span class="loading-dots">Please wait, submitting content</span>
+        </div>
+      </form>
     </section>
-    <section class="projects">
-      <!-- Project list -->
-      <ul class="project-list">
-        <!-- Project list items added by JS -->
-        <span class="loading-dots">Please wait, loading projects</span>
-      </ul>
+    <section class="hidden-section">
+      <p>
+        Thank you for submitting your Details! We will review it and get back to
+        you as soon as possible.
+      </p>
+      <p>
+        In the meantime, you can visit our
+        <a href="index.html">Home Page</a> for more information about the
+        platform services.
+      </p>
     </section>
-    <div class="pagination">
-      <!-- Pagination controls will be dynamically added here -->
-    </div>
     <script
       src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
       integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
@@ -153,7 +198,6 @@
       integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
       crossorigin="anonymous"
     ></script>
-    <script src="js/projects-fetch.js"></script>
-    <script src="js/search.js"></script>
+    <script src="js/add-mentor.js"></script>
   </body>
 </html>
