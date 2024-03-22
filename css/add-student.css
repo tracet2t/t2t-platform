@@ -43,18 +43,6 @@
   margin-bottom: 10px;
 }
 
-.mandatory::after {
-  content: "* ";
-  color: red;
-  margin-left: 5px;
-}
-.mandatory-container {
-  font-size: 1rem;
-  color: #b4713a;
-  margin-bottom: 1rem;
-  position: flex;
-}
-
 .add-student-form input[type="number"]::-webkit-outer-spin-button,
 .add-student-form input[type="number"]::-webkit-inner-spin-button {
   -webkit-appearance: none;
