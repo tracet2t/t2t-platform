@@ -80,6 +80,30 @@
 .header-image {
   margin-top: -400px;
 }
+/* Responsive design */
+@media screen and (max-width: 1000px) {
+  .header-image-container {
+    max-height: 300px;
+  }
+
+  .header-image {
+    margin-top: -30%;
+  }
+}
+
+@media screen and (max-width: 680px) {
+  .header-image {
+    margin-top: -10%;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .header-image {
+    margin-top: -10%;
+  }
+}
+
+/* End of header section */
 
 .hidden-section {
   display: none;
